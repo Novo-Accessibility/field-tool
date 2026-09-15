@@ -146,6 +146,8 @@ main{max-width:1120px;margin:0 auto;padding:28px 22px 90px}
 .severity-btn:hover{border-color:var(--ink3)}
 .severity-btn.active{color:#fff;border-color:transparent}
 .severity-btn.active.s0{background:var(--s0)}
+.feature-card.na{opacity:.55}
+.feature-card.na .feature-title::after{content:' — not applicable';color:var(--s0);font-weight:600}
 .severity-btn.active.s1{background:var(--s1)}
 .severity-btn.active.s2{background:var(--s2)}
 .severity-btn.active.s3{background:var(--s3)}
@@ -200,6 +202,13 @@ main{max-width:1120px;margin:0 auto;padding:28px 22px 90px}
 .report-output th{background:var(--ink);color:#fff;font-weight:700}
 .report-output .meta-block{background:var(--bgw);padding:14px 18px;border-left:3px solid var(--red);border-radius:0 12px 12px 0;margin:14px 0}
 .report-output .disclaimer{margin-top:30px;padding:16px 20px;background:var(--bgw);border-radius:12px;font-size:.8rem;color:var(--ink2);line-height:1.55}
+.report-output .hire-warn{margin:22px 0 8px;padding:20px 24px;background:var(--redp);border-left:4px solid var(--red);border-radius:0 12px 12px 0}
+.report-output .hire-warn h3{margin:0 0 8px;font-size:1.1rem;color:var(--red2)}
+.report-output .hire-warn h4{margin:14px 0 6px;font-size:.92rem;font-weight:800;color:var(--ink)}
+.report-output .hire-warn p{font-size:.88rem;margin-bottom:8px;color:var(--ink2)}
+.report-output .hire-warn ul{margin:0 0 8px 18px;padding:0}
+.report-output .hire-warn li{font-size:.88rem;margin-bottom:8px;color:var(--ink2);line-height:1.55}
+.report-output .hire-warn .no-fee{margin-top:12px;padding-top:10px;border-top:1px solid rgba(192,57,43,.25);font-size:.82rem;color:var(--ink2)}
 .report-output .rank-row{display:grid;grid-template-columns:30px 1fr 110px 110px;gap:10px;padding:8px 0;border-bottom:1px solid var(--bdr);align-items:center;font-size:.86rem}
 .report-output .rank-row .rk{width:26px;height:26px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.72rem}
 .report-output .photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
@@ -228,6 +237,7 @@ main{max-width:1120px;margin:0 auto;padding:28px 22px 90px}
   body{background:#fff}
   main{padding:0;max-width:100%}
   .report-output{border:none;padding:0}
+  .report-output .hire-warn{break-inside:avoid;page-break-inside:avoid}
 }
 @media (max-width:820px){
   .field-grid{grid-template-columns:1fr}
@@ -1771,7 +1781,8 @@ window.SHS_DATA = {
      "sourceType": "best_practice",
      "rc": "Personal Safety",
      "clearance": false,
-     "core": false
+     "core": false,
+     "needsAid": true
     },
     {
      "id": "8.8",
@@ -2100,11 +2111,11 @@ window.SHS_DATA = {
      "id": "11.8",
      "title": "Emergency contact information posted",
      "clause": "Best practice",
-     "required": "Visible near phone with full address and key contacts",
+     "required": "Large-print card near the phone and on the refrigerator: next of kin, family doctor, medications and the property address",
      "weight": 3,
      "cost": "L",
      "aadl": false,
-     "guidance": "In an emergency, the senior may not remember their address to give to 911. A printed sheet by the phone or fridge helps.",
+     "guidance": "The address matters most: a panicking caller, or a neighbour, needs it for 911. Kitchen phone and refrigerator door.",
      "sourceType": "best_practice",
      "rc": "Personal Safety",
      "clearance": false,
@@ -2112,17 +2123,17 @@ window.SHS_DATA = {
     },
     {
      "id": "11.9",
-     "title": "Personal emergency response system (PERS)",
+     "title": "Help can be summoned from the floor",
      "clause": "Best practice",
-     "required": "Pendant or wristband with monitored response",
-     "weight": 4,
+     "required": "A monitored pendant or wristband, or a phone reachable from likely fall positions",
+     "weight": 5,
      "cost": "M",
      "aadl": false,
-     "guidance": "Highly recommended for clients living alone or with falls history. Monthly subscription cost should be discussed with family.",
+     "guidance": "Kneel down in the bathroom and the bedroom and look around from that height. If nothing is reachable, this is a high-weight finding. A monitored pendant runs roughly $30-50 a month; fall detection is worth the premium for anyone with a falls history.",
      "sourceType": "best_practice",
      "rc": "Technology & Emergency",
      "clearance": false,
-     "core": false
+     "core": true
     },
     {
      "id": "11.10",
@@ -2623,7 +2634,8 @@ window.SHS_DATA = {
      "sourceType": "best_practice",
      "rc": "Personal Safety",
      "clearance": false,
-     "core": true
+     "core": true,
+     "needsAid": true
     },
     {
      "id": "13.2",
@@ -2637,7 +2649,8 @@ window.SHS_DATA = {
      "sourceType": "best_practice",
      "rc": "Personal Safety",
      "clearance": false,
-     "core": true
+     "core": true,
+     "needsAid": true
     },
     {
      "id": "13.3",
@@ -2666,34 +2679,6 @@ window.SHS_DATA = {
      "rc": "Personal Safety",
      "clearance": false,
      "core": false
-    },
-    {
-     "id": "13.5",
-     "title": "Emergency contact information posted",
-     "clause": "Best practice",
-     "required": "Large-print card with next of kin, family doctor and the property address",
-     "weight": 3,
-     "cost": "L",
-     "aadl": false,
-     "guidance": "The address matters: a panicking caller, or a neighbour, needs it for 911. Kitchen phone and refrigerator door.",
-     "sourceType": "best_practice",
-     "rc": "Personal Safety",
-     "clearance": false,
-     "core": false
-    },
-    {
-     "id": "13.6",
-     "title": "Help can be summoned from the floor",
-     "clause": "Best practice",
-     "required": "A phone or pendant reachable from likely fall positions",
-     "weight": 5,
-     "cost": "M",
-     "aadl": false,
-     "guidance": "Kneel down in the bathroom and the bedroom and look around from that height. If nothing is reachable, this is a high-weight finding.",
-     "sourceType": "best_practice",
-     "rc": "Personal Safety",
-     "clearance": false,
-     "core": true
     },
     {
      "id": "13.7",
@@ -2924,6 +2909,17 @@ window.SHS_DATA = {
   "phone": "",
   "address": "Calgary, Alberta"
  },
+ "hiring": {
+  "heading": "Before you hire anyone",
+  "intro": "Where this report names a contractor, that company has been checked for business registration, WCB standing and provincial licensing. Insurance is the one thing that has to be current on the day the work happens, so it is worth confirming yourself.",
+  "ask_heading": "When you call for a quote, ask for two documents",
+  "ask": [
+   "A certificate of insurance. You are looking for $2 million general liability. Ask for it to be emailed to you by their insurer or broker rather than shown to you on a phone. These people will be working inside the home.",
+   "A WCB clearance letter. Whoever hires a contractor without WCB coverage can be held responsible for that contractor's unpaid premiums. The letter is free and takes them a minute to produce."
+  ],
+  "close": "Any established contractor has both to hand and will not be offended by the question. Hesitation is itself an answer.",
+  "no_fee": "Senior Home Safety takes no referral fee or commission from any contractor, in either direction. Any company named in this report is named because the work fits, not because anyone paid to be listed."
+ },
  "disclaimers": {
   "scope": "This assessment was conducted by a Senior Home Safety Specialist (SHSS) and is intended to identify environmental fall and safety risks and to recommend modifications. It is not a clinical assessment of the individual's medical, occupational, or rehabilitation needs and does not replace assessment by a regulated healthcare professional including an Occupational Therapist or Physiotherapist.",
   "no_certification": "Senior Home Safety does not certify buildings or homes against any regulatory standard. Where modifications are recommended, implementation should be performed by qualified contractors. Where AADL-eligible equipment is identified, prescription and authorization must be performed by an AADL-authorized assessor (typically a registered Occupational Therapist).",
@@ -3055,8 +3051,10 @@ function inFieldScope(cat, f) {
 }
 function visibleFeatures(cat) {
   if (!catActive(cat)) return [];
-  if (state.mode === 'all') return cat.features;
-  return cat.features.filter(f => inFieldScope(cat, f));
+  // checkpoints about a walking aid only apply when one is in use
+  const list = cat.features.filter(f => !(f.needsAid && !usesMobilityAid()));
+  if (state.mode === 'all') return list;
+  return list.filter(f => inFieldScope(cat, f));
 }
 
 // ══════════════════════════════════════════════ instances
@@ -3115,6 +3113,17 @@ function scoredFindings() {
   return allFeatures().map(f => ({ f, r: state.findings[f.key] }))
     .filter(x => x.r && x.r.severity);
 }
+function isNA(key) { const r = state.findings[key]; return !!r && r.severity === 0; }
+function catCounts(feats, inst) {
+  let total = 0, done = 0;
+  for (const f of feats) {
+    const k = qkey(f.id, inst);
+    if (isNA(k)) continue;
+    total++;
+    if ((state.findings[k] || {}).severity) done++;
+  }
+  return { total, done };
+}
 function computeScore() {
   let num = 0, den = 0;
   for (const { f, r } of scoredFindings()) {
@@ -3125,7 +3134,7 @@ function computeScore() {
   return den ? Math.round(num / den * 100) : null;
 }
 function completeness() {
-  const total = allFeatures().length;
+  const total = allFeatures().filter(f => !isNA(f.key)).length;
   const done = scoredFindings().length;
   return { total, done, pct: total ? Math.round(done / total * 100) : 0 };
 }
@@ -3209,13 +3218,13 @@ function buildIntakeTab() {
 // ── category panels ───────────────────────────
 function featureCard(f, key, showId) {
   const r = state.findings[key] || {};
-  const sev = r.severity || 0;
+  const sev = (r.severity == null) ? null : r.severity;
   const clause = f.sourceType === 'best_practice'
     ? `<span class="pill bp">Best practice</span>`
     : `<span class="pill clause">${esc(f.clause)}</span>`;
   const photos = (r.photos || []).length;
   const shortPhotos = sev >= 3 && photos < 2;
-  return `<div class="feature-card ${sev ? 's' + sev : ''}${f.core ? ' core' : ''}" data-feature="${key}">
+  return `<div class="feature-card ${sev ? 's' + sev : ''}${sev === 0 ? ' na' : ''}${f.core ? ' core' : ''}" data-feature="${key}">
     <div class="feature-header"><div>
       <div class="feature-id">${esc(showId)}</div>
       <div class="feature-title">${esc(f.title)}</div>
@@ -3257,11 +3266,11 @@ function buildCategoryTab(cat) {
       (getInstances(cat.id).length > 1 ? `<button class="instance-remove" data-rm="${k}">✕</button>` : '') + '</div>').join('') +
       `<button class="instance-add" data-add>+ Add ${esc(cat.name.toLowerCase())}</button></div>`;
   }
-  const prog = feats.filter(f => (state.findings[qkey(f.id, inst)] || {}).severity).length;
+  const cc = catCounts(feats, inst);
   panel.innerHTML = `
     <div class="category-header">
       <div><h2><span class="icon">${cat.icon}</span>${esc(cat.name)}</h2><p>${esc(cat.description)}</p></div>
-      <div class="category-progress"><strong>${prog}/${feats.length}</strong><span>Scored</span></div>
+      <div class="category-progress"><strong>${cc.done}/${cc.total}</strong><span>Scored</span></div>
     </div>
     ${switcher}
     ${hidden > 0 ? `<div class="callout"><strong>${hidden} checkpoint${hidden > 1 ? 's' : ''} hidden in field mode.</strong> These are the observation-sweep items — photograph them on site and score them at the desk. Switch to Full scope in the bar above to see them now.</div>` : ''}
@@ -3298,8 +3307,9 @@ function refreshCard(key) {
   const card = document.querySelector(`.feature-card[data-feature="${CSS.escape(key)}"]`);
   if (!card) return;
   const r = state.findings[key] || {};
-  card.classList.remove('s1', 's2', 's3', 's4', 's5');
+  card.classList.remove('s1', 's2', 's3', 's4', 's5', 'na');
   if (r.severity) card.classList.add('s' + r.severity);
+  if (r.severity === 0) card.classList.add('na');
   card.querySelectorAll('.severity-btn').forEach(b => {
     const v = parseInt(b.dataset.sev);
     b.className = 'severity-btn' + (r.severity === v ? ' active s' + v : '');
@@ -3313,7 +3323,8 @@ function updateProgress(cat, inst) {
   const el = document.querySelector('#panel-' + cat.id + ' .category-progress strong');
   if (!el) return;
   const feats = visibleFeatures(cat);
-  el.textContent = feats.filter(f => (state.findings[qkey(f.id, inst)] || {}).severity).length + '/' + feats.length;
+  const c = catCounts(feats, inst);
+  el.textContent = c.done + '/' + c.total;
 }
 
 // ── photos ────────────────────────────────────
@@ -3385,8 +3396,8 @@ function renderTabBar() {
     const feats = visibleFeatures(cat);
     const inst = cat.multiInstance ? activeInstance(cat.id) : '1';
     if (!feats.length) continue;
-    const done = feats.filter(f => (state.findings[qkey(f.id, inst)] || {}).severity).length;
-    tabs.push([cat.id, cat.name, done + '/' + feats.length, done === feats.length && feats.length ? 'done' : '']);
+    const c2 = catCounts(feats, inst);
+    tabs.push([cat.id, cat.name, c2.done + '/' + c2.total, c2.done === c2.total && c2.total ? 'done' : '']);
   }
   const c = completeness();
   tabs.push(['dashboard', 'Dashboard', c.done ? String(c.done) : '', '']);
@@ -3651,6 +3662,14 @@ async function drawReport() {
         <td style="font-size:.8rem">${esc(p.max)}</td><td style="font-size:.8rem">${esc(why)}<div style="color:#8A8078;margin-top:3px">${esc(p.notes)}</div></td>
         <td style="font-size:.76rem">${esc(p.verify_url)}</td></tr>`).join('') + '</tbody></table>'
     : '<p style="color:#8A8078">No program matched from the findings scored so far. Programs are matched to this client’s findings, never listed by default.</p>';
+
+  const hire = DATA.hiring;
+  h += `<h2>Hiring the work out</h2>`;
+  h += `<div class="hire-warn"><h3>${esc(hire.heading)}</h3>`;
+  h += `<p>${esc(hire.intro)}</p>`;
+  h += `<h4>${esc(hire.ask_heading)}</h4><ul>` + hire.ask.map(a => `<li>${esc(a)}</li>`).join('') + '</ul>';
+  h += `<p>${esc(hire.close)}</p>`;
+  h += `<p class="no-fee">${esc(hire.no_fee)}</p></div>`;
 
   if (withPhotos) {
     const withP = all.filter(x => (x.r.photos || []).length);
