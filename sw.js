@@ -11,7 +11,7 @@
 
    Bump CACHE_VERSION whenever index.html changes. */
 
-const CACHE_VERSION = 'shs-tool-v3-2';
+const CACHE_VERSION = 'shs-tool-v3-5';
 const SHELL = [
   './',
   './index.html',
