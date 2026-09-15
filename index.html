@@ -3223,7 +3223,7 @@ function featureCard(f, key, showId) {
     ? `<span class="pill bp">Best practice</span>`
     : `<span class="pill clause">${esc(f.clause)}</span>`;
   const photos = (r.photos || []).length;
-  const shortPhotos = sev >= 3 && photos < 2;
+  const shortPhotos = sev >= 5 && photos < 1;
   return `<div class="feature-card ${sev ? 's' + sev : ''}${sev === 0 ? ' na' : ''}${f.core ? ' core' : ''}" data-feature="${key}">
     <div class="feature-header"><div>
       <div class="feature-id">${esc(showId)}</div>
@@ -3242,7 +3242,7 @@ function featureCard(f, key, showId) {
       </div>
       <input class="measure-input" data-measure placeholder="Measured value" value="${esc(r.measurement || '')}">
       <button class="photo-btn" data-photo>Add photo</button>
-      <span class="photo-count${shortPhotos ? ' short' : ''}" data-pcount>${photos ? photos + ' photo' + (photos > 1 ? 's' : '') : ''}${shortPhotos ? ' · 2 needed' : ''}</span>
+      <span class="photo-count${shortPhotos ? ' short' : ''}" data-pcount>${photos ? photos + ' photo' + (photos > 1 ? 's' : '') : ''}${shortPhotos ? ' · photo needed' : ''}</span>
     </div>
     <div class="photo-thumbnails" data-thumbs></div>
     <div class="feature-notes"><textarea data-notes placeholder="Notes — what you saw, what you told the client">${esc(r.notes || '')}</textarea></div>
@@ -3314,9 +3314,9 @@ function refreshCard(key) {
     const v = parseInt(b.dataset.sev);
     b.className = 'severity-btn' + (r.severity === v ? ' active s' + v : '');
   });
-  const n = (r.photos || []).length, short = (r.severity >= 3) && n < 2;
+  const n = (r.photos || []).length, short = (r.severity >= 5) && n < 1;
   const pc = card.querySelector('[data-pcount]');
-  pc.textContent = (n ? n + ' photo' + (n > 1 ? 's' : '') : '') + (short ? ' · 2 needed' : '');
+  pc.textContent = (n ? n + ' photo' + (n > 1 ? 's' : '') : '') + (short ? ' · photo needed' : '');
   pc.className = 'photo-count' + (short ? ' short' : '');
 }
 function updateProgress(cat, inst) {
@@ -3550,7 +3550,7 @@ function renderDashboard() {
     else { label = 'Good'; cls = 's1'; }
   }
   const nd = nextDollar().slice(0, 12);
-  const noPhoto = all.filter(x => x.r.severity >= 3 && (x.r.photos || []).length < 2);
+  const noPhoto = all.filter(x => x.r.severity >= 5 && (x.r.photos || []).length < 1);
   const noMeasure = all.filter(x => x.r.severity >= 3 && !(x.r.measurement || '').trim());
   p.innerHTML = `
     <div class="score-hero">
